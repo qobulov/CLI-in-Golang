@@ -24,10 +24,13 @@ func Completer(d prompt.Document) []prompt.Suggest {
 		s = []prompt.Suggest{
 			{Text: "weather ", Description: "get current weather default Tashkent"},
 		}
-
-	case "cr", "cry", "cryp", "crypt", "crypto":
+	case "g", "gy", "gym":
 		s = []prompt.Suggest{
-			{Text: "crypto ", Description: "get current crypto prices, e.g., bitcoin, ethereum"},
+			{Text: "gym", Description: "Get gym with 30 day workout"},
+		}
+	case "cr", "cry", "crypt", "crypto":
+		s = []prompt.Suggest{
+			{Text: "crypto ", Description: "get any crypto prices"},
 		}
 	}
 
