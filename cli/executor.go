@@ -2,6 +2,7 @@ package cli
 
 import (
 	"cli/weather"
+	"cli/crypto"
 	"fmt"
 	"github.com/fatih/color"
 	"os"
@@ -73,6 +74,22 @@ func Executor(s string) {
 				color.Red(message)
 			}
 		}
+
+	case "crypto":
+		var cryptoName string
+		if len(commands) >= 2 {
+			cryptoName = commands[1]
+		} else {
+			cryptoName = "bitcoin" // Default qiymat
+		}
+
+		cryptoInfo, err := crypto.GetCryptoPrice(cryptoName)
+		if err != nil {
+			fmt.Printf("Xatolik: %v\n", err)
+		} else {
+			fmt.Printf("%s uchun joriy narx: %.2f USD\n", cryptoInfo.Symbol, cryptoInfo.Price)
+		}
+
 	default:
 		fmt.Println("command not found")
 	}

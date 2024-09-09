@@ -1,4 +1,4 @@
-package Crypto_tracker
+package crypto
 
 import (
 	"fmt"
@@ -15,18 +15,13 @@ func CryptoTracker(currency string, interval int) {
 
 	for {
 		select {
-		case <-ticker.C:
-			return
-		default:
-			time.Sleep(time.Second * 1)
+		case <-ticker.C: // Har safar interval o'tganda
 			price, err := GetCryptoPrice(currency)
 			if err != nil {
 				fmt.Printf("Xatolik: %v\n", err)
-				return
 			} else {
-				fmt.Printf("%s uchun joriy narx: %.2f USD\n", currency, price)
+				fmt.Printf("%s uchun joriy narx: %.2f USD\n", currency, price.Price)
 			}
 		}
-
 	}
 }

@@ -25,6 +25,10 @@ func Completer(d prompt.Document) []prompt.Suggest {
 			{Text: "weather ", Description: "get current weather default Tashkent"},
 		}
 
+	case "cr", "cry", "cryp", "crypt", "crypto":
+		s = []prompt.Suggest{
+			{Text: "crypto ", Description: "get current crypto prices, e.g., bitcoin, ethereum"},
+		}
 	}
 
 	return prompt.FilterHasPrefix(s, d.GetWordBeforeCursor(), true)
